@@ -37,6 +37,8 @@ Let's try to understand where the closure comes in. First, we run our closure fu
 
 `const closureReturn = closure();`
 
+A closure is a function that has access to its outer function's variables. Even after a function `closure()` is returned, the functions that were created and stored into `arr` have access to the variables created in `closure()`. The only variables in `closure()` is `arr` and `i` which is incremented every time.
+
 ```js
 for (var i = 0; i < 3; i++) {
   arr.push(function() {
@@ -45,4 +47,8 @@ for (var i = 0; i < 3; i++) {
 }
 ```
 
-The part that is considered the closure is above. After the array is returned, and the three functions inside the array are invoked, how does the function know what to console.log?
+When the closure() function is returned, the execution context is popped off the function stack, BUT our functions still have access to those two variables. Unfortunately, at the end of the loop `i = 3` and so that's the only number that the 3 functions have access to. That is why all three functions print out `3`
+
+What are some ways we can still use closures and print out 0, 1, and 2? There are two ways.
+
+We can first just use the keyword `let` for i instead of `var`. Since `let` is block-scoped, its like a new `i` is created for every iteration in the for loop. And so when we console.log the three functions, we get the output `0`, `1`, and `2`
