@@ -51,4 +51,10 @@ When the closure() function is returned, the execution context is popped off the
 
 What are some ways we can still use closures and print out 0, 1, and 2? There are two ways.
 
+1. [Using 'Let'](closureWithLet.js)
+
 We can first just use the keyword `let` for i instead of `var`. Since `let` is block-scoped, its like a new `i` is created for every iteration in the for loop. And so when we console.log the three functions, we get the output `0`, `1`, and `2`
+
+2.  [Using an 'IIFE'](closureWithIIFE.js)
+
+We can also use an Immediately Invoked Function Expression to invoke the three functions immediately with (i) and return yet ANOTHER 3 functions that now have access to the proper values of i since they were created in the IIFE with the variable `j`
