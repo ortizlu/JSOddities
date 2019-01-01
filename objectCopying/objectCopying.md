@@ -97,6 +97,8 @@ let item2 = deepClone(item);
 console.log(item2);
 ```
 
+The successful copy is below
+
 ```js
 //{ _id: 'A23412G4671e',
 //  id: 1,
