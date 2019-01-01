@@ -24,8 +24,8 @@ the output of the above results in below. As you can see, the function is simply
 //  pattern: {} }
 ```
 
-//which brings us to a function created by Tarun Sharma in https://medium.com/@tkssharma/objects-in-javascript-object-assign-deep-copy-64106c9aefab
-//unfortunately for us, his function succeeds in copying functions but does not copy REGEXP items.
+Which brings us to a function created by Tarun Sharma in https://medium.com/@tkssharma/objects-in-javascript-object-assign-deep-copy-64106c9aefab
+Unfortunately for us, his function succeeds in copying functions but does not copy REGEXP items.
 
 ```js
 function copy(obj) {
@@ -57,7 +57,7 @@ function createCopy(item) {
 // console.log(item2);
 ```
 
-//the result is below. Everything is copied except for regular expressions.
+The result is below. Everything is copied except for regular expressions.
 
 ```js
 //{ \_id: 'A23412G4671e',
