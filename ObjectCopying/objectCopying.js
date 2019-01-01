@@ -11,33 +11,17 @@ const item = {
 };
 
 // let item2 = JSON.parse(JSON.stringify(item));
-//console.log(item2) //
-
-// function deepClone(obj, hash = new WeakMap()) {
-//   if (Object(obj) !== obj) return obj; // primitives
-//   if (obj instanceof Set) return new Set(obj); // See note about this!
-//   if (hash.has(obj)) return hash.get(obj); // cyclic reference
-//   const result =
-//     obj instanceof Date
-//       ? //creates a copy of a date object
-//         new Date(obj)
-//       : //creates a copy of a regular expression
-//       obj instanceof RegExp
-//       ? new RegExp(obj.source, obj.flags)
-//       : obj.constructor
-//       ? new obj.constructor()
-//       : Object.create(null);
-//   hash.set(obj, result);
-//   if (obj instanceof Map)
-//     Array.from(obj, ([key, val]) => result.set(key, deepClone(val, hash)));
-//   return Object.assign(
-//     result,
-//     ...Object.keys(obj).map(key => ({ [key]: deepClone(obj[key], hash) }))
-//   );
-// }
-
-// let item2 = deepClone(item);
 // console.log(item2);
+
+//the output of the above results in below. As you can see, the function is simply skipped and the REGEX is turned into an empty object
+
+//{ _id: 'A23412G4671e',
+//  id: 1,
+//  name: 'Spongebob Squarepants',
+//  pattern: {} }
+
+//which brings us to a function created by Tarun Sharma in https://medium.com/@tkssharma/objects-in-javascript-object-assign-deep-copy-64106c9aefab
+//unfortunately for us, his function succeeds in copying functions but does not copy REGEXP items.
 
 // function copy(obj) {
 //   if (!obj) {
@@ -65,3 +49,40 @@ const item = {
 // }
 
 // let item2 = createCopy(item);
+// console.log(item2);
+
+//the result is below. Everything is copied except for regular expressions.
+
+//{ _id: 'A23412G4671e',
+//  id: 1,
+//  name: 'Spongebob Squarepants',
+//  setProp: [Function: setProp],
+//  pattern: {} }
+
+//Which brings us to this function provided to us by the StackOverflow community. This one succesfully copies functions as well as regular expressions
+
+// function deepClone(obj, hash = new WeakMap()) {
+//   if (Object(obj) !== obj) return obj; // primitives
+//   if (obj instanceof Set) return new Set(obj); // See note about this!
+//   if (hash.has(obj)) return hash.get(obj); // cyclic reference
+//   const result =
+//     obj instanceof Date
+//       ? //creates a copy of a date object
+//         new Date(obj)
+//       : //creates a copy of a regular expression
+//       obj instanceof RegExp
+//       ? new RegExp(obj.source, obj.flags)
+//       : obj.constructor
+//       ? new obj.constructor()
+//       : Object.create(null);
+//   hash.set(obj, result);
+//   if (obj instanceof Map)
+//     Array.from(obj, ([key, val]) => result.set(key, deepClone(val, hash)));
+//   return Object.assign(
+//     result,
+//     ...Object.keys(obj).map(key => ({ [key]: deepClone(obj[key], hash) }))
+//   );
+// }
+
+// let item2 = deepClone(item);
+// console.log(item2);
