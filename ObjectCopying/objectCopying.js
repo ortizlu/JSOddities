@@ -1,3 +1,5 @@
+//our sample item object that contains a function, REGEXP and other things. Normally, we could use JSON.parse(JSON.stringify(item)) to create an object, but unfortunately that does not work for functions or REGEX.
+
 const item = {
   _id: 'A23412G4671e',
   id: 1,
@@ -8,31 +10,34 @@ const item = {
   pattern: /$[0-7]*^/
 };
 
-function deepClone(obj, hash = new WeakMap()) {
-  if (Object(obj) !== obj) return obj; // primitives
-  if (obj instanceof Set) return new Set(obj); // See note about this!
-  if (hash.has(obj)) return hash.get(obj); // cyclic reference
-  const result =
-    obj instanceof Date
-      ? //creates a copy of a date object
-        new Date(obj)
-      : //creates a copy of a regular expression
-      obj instanceof RegExp
-      ? new RegExp(obj.source, obj.flags)
-      : obj.constructor
-      ? new obj.constructor()
-      : Object.create(null);
-  hash.set(obj, result);
-  if (obj instanceof Map)
-    Array.from(obj, ([key, val]) => result.set(key, deepClone(val, hash)));
-  return Object.assign(
-    result,
-    ...Object.keys(obj).map(key => ({ [key]: deepClone(obj[key], hash) }))
-  );
-}
+// let item2 = JSON.parse(JSON.stringify(item));
+//console.log(item2) //
 
-let item2 = deepClone(item);
-console.log(item2);
+// function deepClone(obj, hash = new WeakMap()) {
+//   if (Object(obj) !== obj) return obj; // primitives
+//   if (obj instanceof Set) return new Set(obj); // See note about this!
+//   if (hash.has(obj)) return hash.get(obj); // cyclic reference
+//   const result =
+//     obj instanceof Date
+//       ? //creates a copy of a date object
+//         new Date(obj)
+//       : //creates a copy of a regular expression
+//       obj instanceof RegExp
+//       ? new RegExp(obj.source, obj.flags)
+//       : obj.constructor
+//       ? new obj.constructor()
+//       : Object.create(null);
+//   hash.set(obj, result);
+//   if (obj instanceof Map)
+//     Array.from(obj, ([key, val]) => result.set(key, deepClone(val, hash)));
+//   return Object.assign(
+//     result,
+//     ...Object.keys(obj).map(key => ({ [key]: deepClone(obj[key], hash) }))
+//   );
+// }
+
+// let item2 = deepClone(item);
+// console.log(item2);
 
 // function copy(obj) {
 //   if (!obj) {
@@ -48,8 +53,6 @@ console.log(item2);
 
 //   return item2;
 // }
-
-// let item2 = JSON.parse(JSON.stringify(item));
 
 // function createCopy(item) {
 //   let item2 = {};
