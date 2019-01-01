@@ -6,4 +6,4 @@ Here are shortcut links to the code being explained, as well as the code itself 
 
 1. [Closures](closures/closures.md)
 2. [Call, Bind and Apply](call_bind_apply/call_bind_apply.md)
-3. [Deep Copying of Objects in JS](objectCopying/objectCopying.js)
+3. [Deep Copying of Objects in JS](objectCopying/objectCopying.md)
