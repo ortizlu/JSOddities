@@ -14,8 +14,10 @@ function deepClone(obj, hash = new WeakMap()) {
   if (hash.has(obj)) return hash.get(obj); // cyclic reference
   const result =
     obj instanceof Date
-      ? new Date(obj)
-      : obj instanceof RegExp
+      ? //creates a copy of a date object
+        new Date(obj)
+      : //creates a copy of a regular expression
+      obj instanceof RegExp
       ? new RegExp(obj.source, obj.flags)
       : obj.constructor
       ? new obj.constructor()
@@ -29,19 +31,8 @@ function deepClone(obj, hash = new WeakMap()) {
   );
 }
 
-// Sample data
-var p = {
-  data: 1,
-  children: [
-    {
-      data: 2,
-      parent: null
-    }
-  ]
-};
-p.children[0].parent = p;
-
 let item2 = deepClone(item);
+console.log(item2);
 
 // function copy(obj) {
 //   if (!obj) {
