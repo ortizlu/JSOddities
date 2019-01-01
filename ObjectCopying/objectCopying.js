@@ -61,28 +61,28 @@ const item = {
 
 //Which brings us to this function provided to us by the StackOverflow community. This one succesfully copies functions as well as regular expressions
 
-// function deepClone(obj, hash = new WeakMap()) {
-//   if (Object(obj) !== obj) return obj; // primitives
-//   if (obj instanceof Set) return new Set(obj); // See note about this!
-//   if (hash.has(obj)) return hash.get(obj); // cyclic reference
-//   const result =
-//     obj instanceof Date
-//       ? //creates a copy of a date object
-//         new Date(obj)
-//       : //creates a copy of a regular expression
-//       obj instanceof RegExp
-//       ? new RegExp(obj.source, obj.flags)
-//       : obj.constructor
-//       ? new obj.constructor()
-//       : Object.create(null);
-//   hash.set(obj, result);
-//   if (obj instanceof Map)
-//     Array.from(obj, ([key, val]) => result.set(key, deepClone(val, hash)));
-//   return Object.assign(
-//     result,
-//     ...Object.keys(obj).map(key => ({ [key]: deepClone(obj[key], hash) }))
-//   );
-// }
+function deepClone(obj, hash = new WeakMap()) {
+  if (Object(obj) !== obj) return obj; // primitives
+  if (obj instanceof Set) return new Set(obj); // See note about this!
+  if (hash.has(obj)) return hash.get(obj); // cyclic reference
+  const result =
+    obj instanceof Date
+      ? //creates a copy of a date object
+        new Date(obj)
+      : //creates a copy of a regular expression
+      obj instanceof RegExp
+      ? new RegExp(obj.source, obj.flags)
+      : obj.constructor
+      ? new obj.constructor()
+      : Object.create(null);
+  hash.set(obj, result);
+  if (obj instanceof Map)
+    Array.from(obj, ([key, val]) => result.set(key, deepClone(val, hash)));
+  return Object.assign(
+    result,
+    ...Object.keys(obj).map(key => ({ [key]: deepClone(obj[key], hash) }))
+  );
+}
 
-// let item2 = deepClone(item);
-// console.log(item2);
+let item2 = deepClone(item);
+console.log(item2);
