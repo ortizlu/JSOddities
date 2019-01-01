@@ -96,3 +96,11 @@ function deepClone(obj, hash = new WeakMap()) {
 let item2 = deepClone(item);
 console.log(item2);
 ```
+
+```js
+//{ _id: 'A23412G4671e',
+//  id: 1,
+//  name: 'Spongebob Squarepants',
+//  setProp: [Function: anonymous],
+//  pattern: /$[0-7]*^/ }
+```
