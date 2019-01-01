@@ -1,6 +1,5 @@
 let fox = {
   name: 'Fox',
-  foxSayings: 'Ring-ding-ding-ding-dingeringeding!',
   whatDoesHeSay: function(...thingsToSay) {
     console.log('=================');
     console.log('Who am I: ' + this.name);
@@ -14,6 +13,7 @@ let dog = {
 };
 
 // fox.whatDoesHeSay('Ring-ding-ding-ding-dingeringeding!');
+
 fox.whatDoesHeSay.apply(dog, [
   'I want to make a fox noise too',
   'Wa-pa-pa-pa-pa-pa-pow!',
