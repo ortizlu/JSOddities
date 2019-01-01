@@ -1,4 +1,6 @@
-our sample item object that contains a function, REGEXP and other things. Normally, we could use JSON.parse(JSON.stringify(item)) to create an object, but unfortunately that does not work for functions or REGEX.
+# Deep Copying in JS
+
+Our sample item object that contains a function, REGEXP and other things. Normally, we could use JSON.parse(JSON.stringify(item)) to create an object, but unfortunately that does not work for functions or REGEX.
 
 ```js
 const item = {
