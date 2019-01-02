@@ -25,3 +25,10 @@ obj1.doSomething.call(
 ```
 
 So `obj1` has the method `doSomething()` that `obj2` wants to have access to. So what we do is reference the function that we need, in this case `obj1.doSomething` and then use call to change the reference of "this" to be obj2. The first parameter is what we want to change "this" to, and any other parameters are what we pass in to `doSomething()`
+
+So our final output becomes
+
+```js
+//name:  obj2
+//work is being performed by obj 2 even though I do not own doSomething()... YAY!
+```
