@@ -111,4 +111,4 @@ The successful copy is below
 
 ## Conclusion
 
-So what did this teach us? That copying objects in JS is a gruesome process. :)
+So what did this teach us? That copying objects in JS is a gruesome process. 🤢
