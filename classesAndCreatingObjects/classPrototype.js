@@ -3,7 +3,7 @@ class Animal {
     this.name = name;
   }
 
-  animal() {
+  whoAmI() {
     console.log('I am an animal');
   }
 }
