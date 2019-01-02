@@ -108,3 +108,7 @@ The successful copy is below
 //  setProp: [Function: anonymous],
 //  pattern: /$[0-7]*^/ }
 ```
+
+## Conclusion
+
+So what did this teach us? That copying objects in JS is a gruesome process. :)
