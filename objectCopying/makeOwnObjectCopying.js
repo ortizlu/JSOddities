@@ -1,3 +1,9 @@
+Function.prototype.clone = function() {
+  var newfun = new Function('return ' + this.toString())();
+  for (var key in this) newfun[key] = this[key];
+  return newfun;
+};
+
 const item = {
   _id: 'A23412G4671e',
   id: 1,
@@ -10,18 +16,6 @@ const item = {
     return (obj[item] = val);
   },
   pattern: /$[0-7]*^/
-};
-
-Function.prototype.clone = function() {
-  var newfun;
-  //evaluates the string to actually be a function. In this case 'newfun=' + this.toString() would result in
-  // newfun=(obj, item, val) => {
-  //  return (obj[item] = val);
-  // }
-  eval('newfun=' + this.toString());
-  //for every property in the old function, the new function gets the properties too
-  for (var key in this) newfun[key] = this[key];
-  return newfun;
 };
 
 function objectCopy(obj) {
