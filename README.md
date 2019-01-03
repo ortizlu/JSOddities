@@ -8,4 +8,4 @@ Here are shortcut links to the code being explained, as well as the code itself 
 2. [Call, Bind and Apply](call_bind_apply/call_bind_apply.md)
 3. [Deep Copying of Objects in JS](objectCopying/objectCopying.md)
 
-<sub><sup>small text<sub><sup>
+<sub>small text<sub>
